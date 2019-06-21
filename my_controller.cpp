@@ -2,7 +2,9 @@
 #include <hardware_interface/actuator_command_interface.h>
 #include <pluginlib/class_list_macros.h>
 #include <std_msgs/Float64.h>
+
 #include <roboticscape.h> 
+#inclue <ros_falcon/falconPos.h>
 
 namespace my_controller_ns
 {
@@ -25,7 +27,7 @@ namespace my_controller_ns
                 return false;
             }
             // Start command subscriber
-            sub_command_ = n.subsrcribe<std_msgs::Float64>("command", 1, &MyPositionController::setCommandCB, this);
+            sub_command_ = n.subscribe<std_msgs::Float64>("command", 1, &MyPositionController::setCommandCB, this);
 
             return true;
         }
